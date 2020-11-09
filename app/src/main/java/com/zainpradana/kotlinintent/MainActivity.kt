@@ -12,22 +12,24 @@ class MainActivity : AppCompatActivity() {
     val UMUR_KEY = "umur_key"
     val SISWA_KEY = "siswa_key"
     lateinit var username: String
+    var umur = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         username = intent.getStringExtra(USERNAME_KEY).toString()
+        umur = intent.getIntExtra(UMUR_KEY, 0)
 
         if (username != "null"){
-            tv_hello_world.text = "Hello $username"
+            tv_hello_world.text = "Hello $username umur saya $umur"
         } else {
             tv_hello_world.text = "Hello World!"
         }
 
         var siswaBlk = intent.getParcelableExtra<Siswa>(SISWA_KEY)
         if (siswaBlk != null){
-            tv_hello_world.text = "Hello ${siswaBlk.nama} ( Umur ${siswaBlk.umur}"
+            tv_hello_world.text = "Hello ${siswaBlk.nama} ( Umur ${siswaBlk.umur} ) dengan Parcelable"
         }
 
     }
